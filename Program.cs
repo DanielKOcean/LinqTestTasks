@@ -21,6 +21,10 @@ namespace LinqTestTasks
             var resultTask6 = Task6(_dataTask6);
 
             var resultTask7 = Task7(_dataATask7, _dataBTask7);
+
+            var resultTask9 = Task9(_dataATask9, _dataBTask9);
+
+            var resultTask10 = Task10(_dataTask10);
         }
 
         #region Task #1
@@ -102,6 +106,44 @@ namespace LinqTestTasks
                 .OrderBy(x => x)
                 .ToList(); 
 
+        #endregion
+
+        #region Task #9
+
+        static List<int> _dataATask9 = new List<int> { 1, 2, 3 };
+
+        static List<int> _dataBTask9 = new List<int> { 4, 5, 6 };
+
+        static List<int> Task9(List<int> dataA, List<int> dataB) =>
+            dataA.SelectMany(x => dataB.Select(y => x + y))
+            .OrderBy(x => x)
+            .ToList();
+
+        #endregion
+
+        #region Task #10
+
+        class Customer
+        {
+            public int Id { get; set; }
+            public int Year { get; set; }
+            public int Month { get; set; }
+            public int OverallTrainingTime {get; set; }
+        }
+
+        static List<Customer> _dataTask10 = new List<Customer>
+        {
+            new Customer {Id = 1, Year = 2019, Month = 10, OverallTrainingTime = 30 },
+            new Customer {Id = 2, Year = 2019, Month = 11, OverallTrainingTime = 35 },
+            new Customer {Id = 3, Year = 2019, Month = 11, OverallTrainingTime = 36 },
+            new Customer {Id = 4, Year = 2019, Month = 12, OverallTrainingTime = 30 },
+        };
+
+        static string Task10(List<Customer> data) =>
+            data.Where(x => x.OverallTrainingTime == data.Min(y => y.OverallTrainingTime))
+                .Select(x => $"{x.OverallTrainingTime} {x.Year} {x.Month}")
+                .Last();
+        
         #endregion
     }
 }
