@@ -17,6 +17,8 @@ namespace LinqTestTasks
             var resultTask4 = Task4(_dataTask4);
 
             var resultTask5 = Task5(_dataTask5);
+
+            var resultTask6 = Task6(_dataTask6);
         }
 
         #region Task #1
@@ -71,6 +73,17 @@ namespace LinqTestTasks
             data.Where(x => x > 0)
                 .Select(x => x % 10)
                 .Distinct()
+                .ToList();
+
+        #endregion
+
+        #region Task #6
+
+        static List<int> _dataTask6 = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
+
+        static List<int> Task6(List<int> data) =>
+            data.Select((x, i) => i % 3 == 1 ? x * 2 : x)
+                .Where((x, i) => i % 3 != 0)
                 .ToList();
 
         #endregion
