@@ -11,6 +11,8 @@ namespace LinqTestTasks
             var resultTask1 = Task1(_dataTask1);
 
             var resultTask2 = Task2(_dataTask2);
+
+            var resultTask3 = Task3(_dataTask3);
         }
 
         #region Task #1
@@ -31,6 +33,17 @@ namespace LinqTestTasks
         static List<int> Task2(List<int> data) =>
             data.Where(x => x > 0 && x.ToString().Length == 2)
                 .OrderBy(x => x)
+                .ToList();
+
+        #endregion
+
+        #region Task #3
+
+        static List<string> _dataTask3 = new List<string> { "ADJSLFKHJL", "FAJL", "ADJPLFKHJL", "FATL", "FD", "FAFADFSFDAFR", "FY"};
+
+        static List<string> Task3(List<string> data) =>
+            data.OrderBy(x => x.Length)
+                .ThenBy(x => x)
                 .ToList();
 
         #endregion
