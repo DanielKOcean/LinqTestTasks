@@ -13,6 +13,8 @@ namespace LinqTestTasks
             var resultTask2 = Task2(_dataTask2);
 
             var resultTask3 = Task3(_dataTask3);
+
+            var resultTask4 = Task4(_dataTask4);
         }
 
         #region Task #1
@@ -46,6 +48,17 @@ namespace LinqTestTasks
                 .ThenBy(x => x)
                 .ToList();
 
+        #endregion
+
+        #region Task #4
+
+            static List<string> _dataTask4 = new List<string> { "asdf", "Rew", "trafa", "nadf", "Slos", "At", "new"};
+
+            static List<char> Task4(List<string> data) =>
+                data.Select(x => x[0])
+                .Reverse()
+                .ToList();
+        
         #endregion
     }
 }
