@@ -15,6 +15,8 @@ namespace LinqTestTasks
             var resultTask3 = Task3(_dataTask3);
 
             var resultTask4 = Task4(_dataTask4);
+
+            var resultTask5 = Task5(_dataTask5);
         }
 
         #region Task #1
@@ -59,6 +61,18 @@ namespace LinqTestTasks
                 .Reverse()
                 .ToList();
         
+        #endregion
+
+        #region Task #5
+
+        static List<int> _dataTask5 = new List<int> { -12, -33, 134, 12, 1, -3, 99, 199, 5, 17, -121, 10};
+
+        static List<int> Task5(List<int> data) =>
+            data.Where(x => x > 0)
+                .Select(x => x % 10)
+                .Distinct()
+                .ToList();
+
         #endregion
     }
 }
