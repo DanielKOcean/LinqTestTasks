@@ -22,6 +22,8 @@ namespace LinqTestTasks
 
             var resultTask7 = Task7(_dataATask7, _dataBTask7);
 
+            var resultTask8 = Task8(_dataATask8, _dataBTask8);
+
             var resultTask9 = Task9(_dataATask9, _dataBTask9);
 
             var resultTask10 = Task10(_dataTask10);
@@ -104,7 +106,22 @@ namespace LinqTestTasks
             dataA.Where(x => x > k1)
                 .Concat(dataB.Where(x => x < k2))
                 .OrderBy(x => x)
-                .ToList(); 
+                .ToList();
+
+        #endregion
+
+        #region Task #8
+
+        static List<int> _dataATask8 = new List<int> { 1, 43, 275 };
+
+        static List<int> _dataBTask8 = new List<int> { 1, 14, 13, 21, 5, 2, 10, 73, 555, 80 };
+
+        static List<string> Task8(List<int> dataA, List<int> dataB) =>
+            dataA.SelectMany(x =>
+                dataB.Where(y => y % 10 == x % 10)
+                    .Select(y => $"{x}-{y}")
+                )
+                .ToList();
 
         #endregion
 
